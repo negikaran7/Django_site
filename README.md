@@ -1,1 +1,1 @@
-# **[python](/home/optimus/Desktop/Jupyter_notebook/basics.ipynb)**
+# **[python](https://www.python.org/)**
