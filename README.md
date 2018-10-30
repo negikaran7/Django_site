@@ -4,6 +4,7 @@
 # **mysite**
 > This is a simple _*blogging**_ site
 
+<<<<<<< HEAD
     - login into your profile
     - new post
     - update post
@@ -11,6 +12,15 @@
     - update profile
     - total number of post by a user
     - logout
+=======
+    -login into your profile
+    -new post
+    -update post
+    -delete post
+    -update profile
+    -total number of post by a user
+    -logout
+>>>>>>> 3a477deccb9a5786a7da8941f20030a5ff060fab
 
 # **[codingbat](https://codingbat.com/python)**
 - Warmup-1
