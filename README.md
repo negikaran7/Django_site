@@ -14,17 +14,7 @@
 
 
 # **[codingbat](https://codingbat.com/python)**
-- Warmup-1
->Simple warmup problems to get started, no loops
-
-- Warmup-2
->Medium warmup string/list problems with loops
-
-- String-1
->Basic python string problems -- no loops. Use + to combine strings, len(str) is the number of chars in a String, str[i:j] extracts the substring starting at index i and running up to but not including index j.
-
-- List-1
->Basic python list problems -- no loops.. Use a[0], a[1], ... to access elements in a list, len(a) is the length.
+>codingbat solutions
 
 # **[hackerrank](https://hackerrank.com)**
->
+>hackerrank codes
