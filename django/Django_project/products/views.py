@@ -18,6 +18,20 @@ from .forms import ProductForm, RawProductForm
 #     }
 #     return render(request, "products/product_create.html",context)
 
+def render_initial_data(request):
+    initial_data={
+        title:"this is initial data"
+    }
+    obj= Product.objets.get(id=1)
+    form=ProductForm(request.POST or None, initial=initial_data,instance=obj)
+    if form.is_valid():
+        form.save()
+        form=ProductForm()
+    context={
+        'form':form
+    }
+    return render(request, "products/product_create.html",context)
+
 
 
 def product_create_view(request):
