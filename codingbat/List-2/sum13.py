@@ -16,3 +16,4 @@ def sum13(nums):
             if i+1 < len(nums):
                 nums[i+1] = 0
     return sum(nums)
+
