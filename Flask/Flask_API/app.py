@@ -14,7 +14,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['DEBUG'] = True
 
 conn = psycopg2.connect(database="newdatabase", user="optimus",
-                        password="Optimus@7#", host="127.0.0.1", port="5432")
+                        password="##########", host="127.0.0.1", port="5432")
 print("Opened database successfully")
 
 cur = conn.cursor()
