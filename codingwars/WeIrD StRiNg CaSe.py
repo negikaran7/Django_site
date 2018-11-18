@@ -6,3 +6,5 @@ def to_weird_case(s):
     for char in s:
         weird += char
     return weird
+
+print(to_weird_case("testing weird string case"))
