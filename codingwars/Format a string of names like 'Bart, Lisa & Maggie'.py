@@ -9,7 +9,7 @@
 #         return ' '.join(first)
 
 def namelist(names):
-    names = [ hash["name"] for hash in names ]
+    names = [ name["name"] for name in names ]
     output = names[:-2]
     output.append(" & ".join(names[-2:]))
     return ", ".join(output)
