@@ -1,11 +1,17 @@
-def namelist(names):
-    new_list=[]
-    for i in range(len(names)):
-        if i>=len(names)-2:
-            new_list.append(names[i]["name"])
-        else:
-            new_list.append(names[i]["name"])
+# def namelist(names):
+    # namelist = [name['name'] for name in names]  #list comprehension  
+#     if len(namelist) <= 1:
+#         return ''.join(namelist)
+#     else:
+#         lastTwo = ' & '.join(namelist[-2:])
+#         first = [n + ',' for n in namelist[:-2]]
+#         first.append(lastTwo)
+#         return ' '.join(first)
 
-    return ' '.join(map(str, new_list))
+def namelist(names):
+    names = [ hash["name"] for hash in names ]
+    output = names[:-2]
+    output.append(" & ".join(names[-2:]))
+    return ", ".join(output)
 
 print(namelist([ {'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'} ]))
