@@ -8,7 +8,7 @@
     use os.walk in your answer. We are interested in your 
     ability to work with nested structures. 
     """
-    
+
 def print_directory_contents(sPath):
     import os
     for sChild in os.listdir(sPath):
@@ -17,5 +17,5 @@ def print_directory_contents(sPath):
             print_directory_contents(sChildPath)
         else:
             print(sChildPath)
-
+    print(next(os.walk(sPath)))
 print_directory_contents("/media/optimus/Alpha/")
