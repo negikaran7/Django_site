@@ -7,4 +7,4 @@ def wave(str):
         else:
             new_wave.append(str[0:i]+str[i].upper()+str[i+1:])
     return new_wave
-print(wave("hello"))
+print(wave(input()))
