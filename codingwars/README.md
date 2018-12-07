@@ -15,7 +15,7 @@
 - [Format a string of names like 'Bart, Lisa & Maggie'.](https://www.codewars.com/kata/53368a47e38700bd8300030d)
 - [Mexican Wave](https://www.codewars.com/kata/58f5c63f1e26ecda7e000029)
 - [Reverse every other word in the string](https://www.codewars.com/kata/58d76854024c72c3e20000de)
-- []()
+- [WeIrD StRiNg CaSe](https://www.codewars.com/kata/weird-string-case/python)
 
 ##### 5 kyu
 - [Did I Finish my Sudoku?](https://www.codewars.com/kata/53db96041f1a7d32dc0004d2)
