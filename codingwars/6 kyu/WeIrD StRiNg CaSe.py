@@ -1,10 +1,14 @@
-def to_weird_case(s):
-    s = list(s)
-    s_even = list(letter.upper() for letter in s[::2])
-    s[::2] = s_even
-    weird = ''
-    for char in s:
-        weird += char
-    return weird
+def to_weird_case(string):
+    word_list = list(string.split(' '))
+    new_word_list = []
+    for word in word_list:
+        charac_list = []
+        for index in range(len(word)):
+            if index % 2 == 0:
+                charac_list.append(word[index].upper())
+            else:
+                charac_list.append(word[index].lower())
+        new_word_list.append(''.join(charac_list))
+    return ' '.join(new_word_list)
 
-print(to_weird_case("testing weird string case"))
+print(to_weird_case("HELP"))
