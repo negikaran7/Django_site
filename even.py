@@ -39,18 +39,28 @@ def isprimev3(n):
 """============time function====================="""
 t0 = time.time()
 for n in range(1, 10000):
-    isprimev1(n)
+    if isprimev1(n)== True:
+        # print(n)
+        pass
 t1 = time.time()
-print("time required for v1:", t1-t0)
+# print("time required for v1:", t1-t0)
 
 t2 = time.time()
 for n in range(1, 10000):
-    isprimev2(n)
+    if isprimev2(n)== True:
+        # print(n)
+        pass
 t3 = time.time()
-print("time required for v2:", t3-t2)
+# print("time required for v2:", t3-t2)
 
 t4 = time.time()
 for n in range(1, 10000):
-    isprimev3(n)
+    if isprimev3(n)== True:
+        # print(n)
+        pass
 t5 = time.time()
+# print("time required for v3:", t5-t4)
+
+print("time required for v1:", t1-t0)
+print("time required for v2:", t3-t2)
 print("time required for v3:", t5-t4)
