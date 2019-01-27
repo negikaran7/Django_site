@@ -1,5 +1,5 @@
 from model import db
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template,redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 from model import User
@@ -9,15 +9,26 @@ import json
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://optimus:Optimus@7#@localhost/newdatabase'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://###########@localhost/newdatabase'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['DEBUG'] = True
 
-conn = psycopg2.connect(database="newdatabase", user="optimus",
-                        password="##########", host="127.0.0.1", port="5432")
+conn = psycopg2.connect(database="newdatabase", user="########",
+                        password="#########", host="127.0.0.1", port="5432")
 print("Opened database successfully")
 
 cur = conn.cursor()
+
+# Route for handling the login page logic
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('homepage'))
+    return render_template('login.html', error=error)
 
 
 @app.route('/')
@@ -57,8 +68,6 @@ def showuser(email):
     return jsonify(details)
 
 # POST add data
-
-
 @app.route('/add_data', methods=['POST'])
 def adddata():
     try:

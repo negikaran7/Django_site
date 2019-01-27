@@ -1,4 +1,4 @@
-kfrom flask import Flask
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, backref
