@@ -1,12 +1,39 @@
 from django.shortcuts import render, redirect
-from .models import Tutorial
+from django.http import HttpResponse
+from .models import Tutorial, TutorialCategory, TutorialSeries
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import NewUserForm
 
+
+def single_slug(request, single_slug):
+    categories = [c.category_slug for c in TutorialCategory.objects.all()]
+    if single_slug in categories:
+        matching_series = TutorialSeries.objects.filter(
+            tutorial_category__category_slug=single_slug)
+
+        series_urls = {}
+        for m in matching_series.all():
+            part_one = Tutorial.objects.filter(
+                tutorial_series__tutorial_series=m.tutorial_series).earliest("tutorial_published")
+            series_urls[m] = part_one.tutorial_slug
+
+        return render(request=request,
+                      template_name='main/category.html',
+                      context={"tutorial_series": matching_series, "part_ones": series_urls})
+
+    tutorials = [t.category_slug for t in Tutorial.objects.all()]
+    if single_slug in tutorials:
+        return HttpResponse(f"{single_slug} is a tutorial!!!")
+
+    return HttpResponse(f"{single_slug} does not respond to anything.")
+
+
 def homepage(request):
-    return render(request=request, template_name='main/home.html', context={"tutorials": Tutorial.objects.all})
+    return render(request=request,
+                  template_name='main/categories.html',
+                  context={"categories": TutorialCategory.objects.all})
 
 
 def register(request):
@@ -32,32 +59,32 @@ def register(request):
                   template_name="main/register.html",
                   context={"form": form})
 
+
 def logout_request(request):
     logout(request)
-    messages.info(request,"logged out successfully")
+    messages.info(request, "logged out successfully")
     return redirect("main:homepage")
 
+
 def login_request(request):
-    if request.method=="POST":
-        form=AuthenticationForm(request,data=request.POST)
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
-            password= form.cleaned_data.get('password')
-            user =authenticate(username=username,password=password)
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
             if user is not None:
-                login(request,user)
-                messages.info(request,f"you are logged in as {username}")
+                login(request, user)
+                messages.info(request, f"you are logged in as {username}")
                 return redirect("main:homepage")
             else:
-                messages.error(request,"Invalid username or password")
+                messages.error(request, "Invalid username or password")
         else:
-            messages.error(request,"Invalid username or password")
+            messages.error(request, "Invalid username or password")
 
-    form=AuthenticationForm()
-    return render(request,'main/login.html',{"form":form})
-
-
+    form = AuthenticationForm()
+    return render(request, 'main/login.html', {"form": form})
 
 
 def about_page(request):
-    return render(request,'main/about.html')
+    return render(request, 'main/about.html')
