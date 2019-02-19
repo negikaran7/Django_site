@@ -29,3 +29,8 @@ def register(request):
     return render(request,
     "main/register.html",
     {"form":form})
+
+def logout_request(request):
+    logout(request)
+    messages.info(request,f'Logged out successfully!')
+    return redirect("main:homepage")
