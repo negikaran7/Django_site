@@ -4,11 +4,13 @@
     <div class="row">
         {% for tut in tutorials %}
         <div class="col s12 m6">
-            <div class="card cyan darken-1">
+            <div class="card teal lighten-2">
                 <div class="card-content white-text">
-                    <span class="card-title">{{tut.tutorial_title}}</span>
-                    <p>{{tut.tutorial_published}}</p>
-                    <p>{{tut.tutorial_content|safe}}</p>
+                    <div class="card-panel teal">
+                        <span class="card-title">{{tut.tutorial_title}}</span>
+                        <p>{{tut.tutorial_published}}</p>
+                        <p>{{tut.tutorial_content|safe}}</p>
+                    </div>
                 </div>
             </div>
         </div>
