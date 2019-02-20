@@ -11,13 +11,23 @@ from .forms import NewUserForm
 def single_slug(request, single_slug):
     categories = [c.category_slug for c in TutorialCategory.objects.all()]
     if single_slug in categories:
-        return HttpResponse(f"{single_slug} is a category")
+        matching_series = TutorialSeries.objects.filter(
+            tutorial_category__category_slug=single_slug)
+        series_urls = {}
+        for m in matching_series.all():
+            part_one = Tutorial.objects.filter(
+                tutorial_series__tutorial_series=m.tutorial_series).earliest("tutorial_published")
+            series_urls[m] = part_one.tutorial_slug
+        return render(request=request,
+                      template_name='main/category.html',
+                      context={"tutorial_series": matching_series, "part_ones": series_urls})
 
     tutorials = [t.tutorial_slug for t in Tutorial.objects.all()]
     if single_slug in tutorials:
-        return HttpResponse(f"{single_slug} is a Tutorial")
-
-    return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")
+        this_tutorial = Tutorial.objects.get(tutorial_slug=single_slug)
+        return render(request=request,
+                      template_name='main/tutorial.html',
+                      context={"tutorial": this_tutorial})
 
 
 def homepage(request):
@@ -38,7 +48,6 @@ def register(request):
         else:
             for msg in form.error_messages:
                 messages.error(request, f'{msg}:{form.error_messages[msg]}')
-
     form = NewUserForm
     return render(request,
                   "main/register.html",
