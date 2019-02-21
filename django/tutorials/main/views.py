@@ -29,6 +29,8 @@ def single_slug(request, single_slug):
                       template_name='main/tutorial.html',
                       context={"tutorial": this_tutorial})
 
+    return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")
+
 
 def homepage(request):
     return render(request=request,
