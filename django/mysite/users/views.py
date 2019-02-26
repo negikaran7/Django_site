@@ -10,7 +10,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request,f'new account created for {username}')
-            return redirect("blog-home")
+            return redirect("login")
     else:
         form = NewUserForm()
     return render(request,'users/register.html',{"form":form})
