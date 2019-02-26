@@ -13,7 +13,7 @@
                 </div>
                 {% if user.is_authenticated %}
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="#">{{ user }}</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user }}</a>
                     <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>    
                 </div>
                 {% else %}
