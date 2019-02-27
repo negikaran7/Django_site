@@ -12,7 +12,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
 
     {% if title %}
@@ -30,11 +29,11 @@
         <div class="row">
             <div class="col-md-8">
                 {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags}}">
-                            {{message}}
-                        </div>
-                    {% endfor %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags}}">
+                    {{message}}
+                </div>
+                {% endfor %}
                 {% endif %}
                 {% block content %}{% endblock %}
             </div>
@@ -64,6 +63,7 @@
         crossorigin="anonymous"></script>
     <!-- Prism JS -->
     <script src="{% static 'tinymce/js/prism.js' %}"></script>
+    <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
 </body>
 
 </html>

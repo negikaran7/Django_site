@@ -45,8 +45,9 @@ class PostUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
         return False
 
 
-class PostDeleteView(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
+    success_url = '/'
 
     def test_func(self):
         post = self.get_object()
