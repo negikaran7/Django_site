@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'tinymce',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +87,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,10 +95,22 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <- Here
+                'social_django.context_processors.login_redirect',  # <- Here
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.github.GithubOAuth2',  # for Github authentication
+    'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -151,10 +164,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-CRISPY_TEMPLATE_PACK='bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL='blog-home'
-LOGIN_URL='login'
+LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'login'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='747453776292-1ekstbq15he6418pheehg8f9a9t1bbn1.apps.googleusercontent.com'  #Paste CLient Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'bcWOBeWqvQ_RzdreJtPxPU0L' #Paste Secret Key
