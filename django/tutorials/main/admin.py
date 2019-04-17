@@ -19,9 +19,9 @@ class TutorialAdmin(admin.ModelAdmin):
         ("Series", {'fields': ["tutorial_series"]}),
         ("Content", {"fields": ["tutorial_content"]})
     ]
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE()}
-    }
+    # formfield_overrides = {
+    #     models.TextField: {'widget': TinyMCE()}
+    # }
 
 
 admin.site.register(Tutorial, TutorialAdmin)

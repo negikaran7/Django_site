@@ -85,3 +85,9 @@ def login_request(request):
     return render(request,
                   "main/login.html",
                   {"form": form})
+
+
+def account(request):
+    return render(request=request,
+                  template_name='main/categories.html',
+                  context={"categories": TutorialCategory.objects.all})
