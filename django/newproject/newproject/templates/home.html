@@ -3,6 +3,6 @@
     homepage
 {% endblock %}
 {% block content %}
-<h1>welcome to the homepage</h1>
+<h1>welcome to the homepage! {% if user.is_authenticated %} {{ user.username }} {% else %} guest {% endif %}</h1>
 <strong>Total Signup: {{count}}</strong>
 {% endblock %}
