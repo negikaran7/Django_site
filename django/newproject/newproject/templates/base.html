@@ -6,8 +6,9 @@
 </head>
 <body>
     <h1>my site</h1>
-    <a href="{% url 'home' %}">home</a>
-    <a href="{% url 'signup' %}">signup</a>
+    <a href="{% url 'home' %}">home</a>/
+    <a href="{% url 'signup' %}">signup</a>/
+    <a href="{% url 'login' %}">Login</a>
     <hr>
     {% block content %}
     {% endblock %}

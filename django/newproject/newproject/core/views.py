@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 def home(request):
-    return render(request,'home.html')
+    count=User.objects.count()
+    return render(request,'home.html',{'count':count})
 
 def signup(request):
     if request.method=='POST':
@@ -13,3 +15,4 @@ def signup(request):
     else:
         form=UserCreationForm()
     return render(request,'registration/signup.html',{'form':form})
+
