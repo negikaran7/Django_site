@@ -13,31 +13,45 @@
         <a class="navbar-brand" href="{% url 'home'%}">mysite</a>
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}"><ion-icon size="large" name="home"></ion-icon></a>
+                <a class="nav-link" href="{% url 'home' %}">
+                    <ion-icon name="home"></ion-icon>
+                </a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a href="{% url 'secret' %}" class="nav-link"><ion-icon size="large" name="lock"></ion-icon></a>
+                <a href="{% url 'secret' %}" class="nav-link">
+                    <ion-icon name="lock"></ion-icon>
+                </a>
             </li>
             <li class="nav-item">
-                <a href="{% url 'secret2' %}" class="nav-link"><ion-icon size="large" name="nuclear"></ion-icon></a>
+                <a href="{% url 'secret2' %}" class="nav-link">
+                    <ion-icon name="nuclear"></ion-icon>
+                </a>
             </li>
             <li class="nav-item">
-                <a href="{% url 'password_change' %}" class="nav-link"><ion-icon size="large" name="key"></ion-icon></a>
+                <a href="{% url 'password_change' %}" class="nav-link">
+                    <ion-icon name="key"></ion-icon>
+                </a>
             </li>
             <li class="nav-item">
-                <a href="{% url 'logout' %}" class="nav-link"><ion-icon size="large" name="log-out"></ion-icon></a>
+                <a href="{% url 'logout' %}" class="nav-link">
+                    <ion-icon name="log-out"></ion-icon>
+                </a>
             </li>
             <li class="nav-item">
-                <strong>logged in as {{ user.username}}</strong>
+                <strong style="color:cyan">{{ user.username}}<ion-icon name="person"></ion-icon></strong>
             </li>
 
             {% else %}
             <li class="nav-item">
-                <a href="{% url 'signup' %}" class="nav-link"><ion-icon size="large" name="person-add"></ion-icon></a>
+                <a href="{% url 'signup' %}" class="nav-link">
+                    <ion-icon name="person-add"></ion-icon>
+                </a>
             </li>
             <li class="nav-item">
-                <a href="{% url 'login' %}" class="nav-link"><ion-icon size="large" name="log-in"></ion-icon></a>
+                <a href="{% url 'login' %}" class="nav-link">
+                    <ion-icon name="log-in"></ion-icon>
+                </a>
             </li>
             {% endif %}
         </ul>
