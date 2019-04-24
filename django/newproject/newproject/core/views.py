@@ -19,9 +19,9 @@ def signup(request):
         form=UserCreationForm()
     return render(request,'registration/signup.html',{'form':form})
 
-@login_required
-def secret_page(request):
-    return render(request,'secret_page.html')
+# @login_required
+# def secret_page(request):
+#     return render(request,'secret_page.html')
 
-class Secretpage(LoginRequiredMixin,TemplateView):
-    template_name='secret_page.html'
+# class Secretpage(LoginRequiredMixin,TemplateView):
+#     template_name='secret_page.html'

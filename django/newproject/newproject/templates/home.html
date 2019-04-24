@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
-    homepage
+homepage
 {% endblock %}
 {% block content %}
-<h1>welcome to the homepage! {% if user.is_authenticated %} {{ user.username }} {% else %} guest {% endif %}</h1>
+<h1> 
+    {% if user.is_authenticated %} 
+    Welcome ! <strong style="color:teal">{{ user.username }}</strong> 
+    {% else %} 
+    guest! <a href="{%url 'signup'%}">signup</a>
+    {% endif %}
+</h1>
 <strong>Total Signup: {{count}}</strong>
 {% endblock %}

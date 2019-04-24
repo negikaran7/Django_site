@@ -19,16 +19,6 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a href="{% url 'secret' %}" class="nav-link">
-                    <ion-icon name="lock"></ion-icon>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'secret2' %}" class="nav-link">
-                    <ion-icon name="nuclear"></ion-icon>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{% url 'password_change' %}" class="nav-link">
                     <ion-icon name="key"></ion-icon>
                 </a>
@@ -38,10 +28,6 @@
                     <ion-icon name="log-out"></ion-icon>
                 </a>
             </li>
-            <li class="nav-item">
-                <strong style="color:cyan">{{ user.username}}<ion-icon name="person"></ion-icon></strong>
-            </li>
-
             {% else %}
             <li class="nav-item">
                 <a href="{% url 'signup' %}" class="nav-link">
