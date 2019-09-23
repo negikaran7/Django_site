@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship, backref
 
 app=Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://optimus:Optimus@7#@localhost/newdatabase'
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://optimus:##########@localhost/newdatabase'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db=SQLAlchemy(app)
